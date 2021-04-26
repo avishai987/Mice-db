@@ -1,0 +1,35 @@
+#cut relevant lines
+for file in C:/Users/avish/raw_date/TRB/files/* ; 
+	do s=${file##*/};
+	cut -f 3,24,33 $file> "$s"; 
+done
+
+
+#add column with sample id 
+for file in C:/Users/avish/raw_date/TRB/new_files/* 
+	do s=${file##*/};
+	A="$(cut -d'.' -f1 <<<"$s")";
+	sed -i "s/$/\t$A/" $file ; 
+done
+
+#add sample id header
+for file in C:/Users/avish/raw_date/TRB/new_files/* 
+	do s=${file##*/};
+	A="$(cut -d'.' -f1 <<<"$s")";
+	sed -i "1s/$A/sample_id/" $file ; 
+done
+
+#remove first line
+for file in C:/Users/avish/raw_date/TRB/new_files/* 
+	do sed -i 1,1d $file
+done
+
+#combine all files
+find /cygdrive/c/Users/avish/raw_date/TRA/new_files/ -name '*.txt' -exec cat {} \; > all.txt
+
+
+cat 1.clonotypes.TRB.txt all.txt > all2.txt
+
+#txt to csv
+sed 's/\t/,/g' all2.txt > clonotypes.TRB.csv
+
