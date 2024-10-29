@@ -1,5 +1,5 @@
 
-The project focuses on finding a model capable of predicting the response to immunotherapy, given the T-cell repertoire (comprising the TRA repertoire and the TRB repertoire) from a patient, pre-treatment.
+The project focuses on finding a model capable of predicting the response to immunotherapy, given the T-cell repertoire sequencing (comprising the TRA repertoire and the TRB repertoire) from a patient, pre-treatment.
 
 The preliminary phase of the project included sequencing the T-cell repertoire of GBM-induced mice, alignment, identifying unique peptides for each mouse, and calculating 31 biochemical properties of the unique peptides.
 
